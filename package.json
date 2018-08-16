@@ -4,7 +4,7 @@
   "description": "Artisanal inbound emails for every web app using nodejs",
   "main": "index.js",
   "bin": {
-    "mailin": "run-cli.js"
+    "nodeMailin": "run-cli.js"
   },
   "scripts": {
     "test": "node -e \"require('grunt').tasks(['mochaTest']);\"",
