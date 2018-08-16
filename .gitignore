@@ -3,4 +3,3 @@ node_modules
 *.swp
 *.pyc
 .idea
-package-lock.json
