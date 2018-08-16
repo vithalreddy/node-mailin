@@ -1,0 +1,6 @@
+node_modules
+.tmp
+*.swp
+*.pyc
+.idea
+package-lock.json

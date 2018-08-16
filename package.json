@@ -1,0 +1,64 @@
+{
+  "name": "node-mailin",
+  "version": "1.0.0",
+  "description": "Artisanal inbound emails for every web app using nodejs",
+  "main": "index.js",
+  "bin": {
+    "mailin": "run-cli.js"
+  },
+  "scripts": {
+    "test": "node -e \"require('grunt').tasks(['mochaTest']);\"",
+    "start": "run-cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vithalreddy/node-mailin.git"
+  },
+  "keywords": [
+    "incoming",
+    "inbound",
+    "email",
+    "parse",
+    "smtp",
+    "easy",
+    "post"
+  ],
+  "author": "VithalReddy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vithalreddy/node-mailin/issues"
+  },
+  "homepage": "https://github.com/vithalreddy/node-mailin",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "commander": "^2.8.1",
+    "dkim": "^0.4.1",
+    "extend": "^3.0.1",
+    "forever-monitor": "^1.5.2",
+    "html-to-text": "^4.0.0",
+    "languagedetect": "^1.1.1",
+    "lodash": "^4.17.10",
+    "mailparse": "^2.2.2",
+    "semver": "^5.0.1",
+    "shelljs": "^0.8.2",
+    "smtp-server": "^3.4.4",
+    "spamc": "^0.0.5",
+    "spf-validator": "^0.2.0",
+    "uuid": "^3.2.1",
+    "winston": "^2.4.2"
+  },
+  "devDependencies": {
+    "async": "^2.6.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "express": "^4.16.3",
+    "grunt": "^1.0.2",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-jsbeautifier": "^0.2.10",
+    "grunt-mocha-test": "^0.13.3",
+    "mocha": "^5.1.1",
+    "multiparty": "^4.1.2",
+    "should": "^13.2.1",
+    "smtp-connection": "^4.0.2"
+  }
+}

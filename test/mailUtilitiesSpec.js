@@ -1,0 +1,40 @@
+'use strict';
+
+const fs = require('fs');
+const shell = require('shelljs');
+const mailUtilities = require('../lib/mailUtilities');
+const should = require('should');
+
+describe('The mail signature verfier', function() {
+	it('should be able to verify the spf for a given ip, address and host', function(done) {
+		mailUtilities.validateSpf(
+			'180.73.166.174',
+			'someone@gmail.com',
+			'gmail.com',
+			function(err, isSpfValid) {
+				if (err) console.log(err);
+				should.not.exist(err);
+				isSpfValid.should.not.be.true;
+				done();
+			}
+		);
+	});
+
+	it('should be able to compute a spam score for an email', function(done) {
+		if (!shell.which('spamassassin') || !shell.which('spamc')) {
+			console.warn(
+				'Spamassassin is not installed. Skipping spam score test.'
+			);
+			return done();
+		}
+
+		const email = fs.readFileSync('./test/fixtures/test.eml').toString();
+		mailUtilities.computeSpamScore(email, function(err, result) {
+			if (err) console.log(err);
+			should.not.exist(err);
+
+			result.should.eql(3.3);
+			done();
+		});
+	});
+});
