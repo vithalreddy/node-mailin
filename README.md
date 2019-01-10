@@ -22,13 +22,14 @@ sudo aptitude install nodejs ; sudo ln -s $(which nodejs) /usr/bin/node
 
 To handle the spam score computation, Node-Mailin depends on spamassassin and its server interface spamc. Both should be available as packages on your machine. For instance on Debian/Ubuntu boxes:
 
+Spamassassin is not enabled by default, enable it in with update-rc.d spamassassin enable command.
+
 ```bash
 sudo aptitude install spamassassin spamc
-sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/spamassassin
+sudo update-rc.d spamassassin enable
 sudo service spamassassin start
 ```
 
-Spamassassin is not enabled by default, enable it in `/etc/default/spamassassin`.
 
 #### Node versions
 
