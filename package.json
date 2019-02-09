@@ -37,7 +37,7 @@
     "forever-monitor": "^1.5.2",
     "html-to-text": "^4.0.0",
     "languagedetect": "^1.1.1",
-    "lodash": "^4.17.10",
+    "lodash": ">=4.17.11",
     "mailparse": "^2.2.2",
     "semver": "^5.0.1",
     "shelljs": "^0.8.2",
