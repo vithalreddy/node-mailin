@@ -120,6 +120,28 @@ nodeMailin.on("authorizeUser", function(connection, username, password, done) {
   }
 });
 
+/* Event emitted when the "From" address is received by the smtp server. */
+nodeMailin.on('validateSender', async function(session, address, callback) {
+    if (address == 'foo@bar.com') { /*blacklist a specific email adress*/
+        err = new Error('You are blocked'); /*Will be the SMTP server response*/
+        err.responseCode = 530; /*Will be the SMTP server return code sent back to sender*/
+        callback(err);
+    } else {
+        callback()
+    }
+});
+
+/* Event emitted when the "To" address is received by the smtp server. */
+nodeMailin.on('validateRecipient', async function(session, address, callback) {
+    console.log(address) 
+    /* Here you can validate the address and return an error 
+     * if you want to reject it e.g: 
+     *     err = new Error('Email address not found on server');
+     *     err.responseCode = 550;
+     *     callback(err);*/
+    callback()
+});
+
 /* Event emitted when a connection with the Node-Mailin smtp server is initiated. */
 nodeMailin.on("startMessage", function(connection) {
   /* connection = {
@@ -143,6 +165,22 @@ nodeMailin.on("error", function(error) {
   console.log(error);
 });
 ```
+
+##### Rejecting an incoming email
+
+You can reject an incoming email when the **validateRecipient** or **validateSender** event gets called and you run the callback with an error (Can be anything you want, preferably an [actual SMTP server return code](https://en.wikipedia.org/wiki/List_of_SMTP_server_return_codes))
+```JavaScript
+nodeMailin.on('validateSender', async function(session, address, callback) {
+    if (address == 'foo@bar.com') {         /*blacklist a specific email adress*/
+        err = new Error('Email address was blacklisted'); /*Will be the SMTP server response*/
+        err.responseCode = 530;             /*Will be the SMTP server return code sent back to sender*/
+        callback(err);                      /*Run callback with error to reject the email*/
+    } else {
+        callback()                          /*Run callback to go to next step*/
+    }
+});
+```
+
 
 ##### Events
 
