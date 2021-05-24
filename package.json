@@ -1,6 +1,6 @@
 {
   "name": "node-mailin",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Artisanal inbound emails for every web app using nodejs",
   "main": "index.js",
   "bin": {
